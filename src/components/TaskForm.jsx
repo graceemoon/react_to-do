@@ -1,7 +1,29 @@
 import React from 'react';
 
-const TaskForm = (props) => (
-  <form className="form-inline" onSubmit={(e)=>console.log(e)}>
+
+export default function TaskForm(props) {
+
+  const handleSubmit = (event) => {
+  //stop the event from leaving the form
+  event.preventDefault();
+    // event.stopPropagation();
+
+  // const newTask = {
+  //   name: event.target.taskName.value,
+  //   desc: event.target.taskDesc.value,
+  // }
+
+    props.addTask(
+      event.target.taskName.value,
+      event.target.taskDesc.value
+      );
+    return false;
+  // console.log(e.target);
+};
+
+
+  return (
+    <form className="form-inline" onSubmit={handleSubmit}>
 
     <div className="form-group">
       <label className="sr-only" htmlFor="taskName">Task Name</label>
@@ -14,6 +36,5 @@ const TaskForm = (props) => (
     </div>
     <button type="submit" className="btn btn-danger btn-lg">Add Task</button>
   </form>
-);
-
-export default TaskForm;
+  );
+}
