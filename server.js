@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const homeRoute = require('./routes/home');
-const taskRoute = require('./routes/task');
+const taskRoute = require('./routes/tasks');
 
 //This tests to see if we have NODE_ENV in our environment.
 //Only load the dotenv if we need it.
@@ -29,7 +29,7 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', homeRoute);
-app.use('/task', taskRoute);
+app.use('/tasks', taskRoute);
 
 
 app.listen(PORT, () => console.log('Listening on port ', PORT));
